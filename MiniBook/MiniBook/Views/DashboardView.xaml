@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:tabs ="clr-namespace:MiniBook.Views.Tabs" 
+            xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
+            xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+            xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core" xmlns:viewmodels="clr-namespace:MiniBook.ViewModels" 
+            x:DataType="viewmodels:DashboardViewModel"
+            android:TabbedPage.ToolbarPlacement="Bottom"
+            BarBackgroundColor="White"
+            BarTextColor="Black"
+            x:Class="MiniBook.Views.DashboardView"
+            x:Name="Root">
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal"
+                     HorizontalOptions="Center">
+            
+            <forms:CachedImage Source="{Binding User.Picture}"
+                               WidthRequest="40"
+                               HeightRequest="40">
+                <forms:CachedImage.Transformations>
+                    <transformations:CircleTransformation />
+                </forms:CachedImage.Transformations>
+            </forms:CachedImage>
+            <Label Text="{Binding Source={x:Reference Root}, Path=CurrentPage.Title}"
+                   FontSize="Medium"
+                   FontAttributes="Bold"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"
+                   Margin="10,0"/>
+            <forms:CachedImage Source="{Binding User.Picture}"
+                   WidthRequest="40"
+                   HeightRequest="40">
+                <forms:CachedImage.Transformations>
+                    <transformations:CircleTransformation />
+                </forms:CachedImage.Transformations>
+            </forms:CachedImage>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <TabbedPage.Children>
+        <tabs:HomeView IconImageSource="ic_tab_home.png" Title="Home" />
+        <tabs:MoreView IconImageSource="ic_tab_search.png" Title="Search"/>
+        <tabs:NotificationsView IconImageSource="ic_tab_noti.png" Title="Notify" />
+        <tabs:InboxView IconImageSource="ic_tab_inbox.png" Title="InBox" />
+    </TabbedPage.Children>
+</TabbedPage>
